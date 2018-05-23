@@ -1,7 +1,8 @@
-package com.bridgelabz.user.controller;
+package com.fundoonotes.userservice;
 
 
 import java.util.List;
+
 
 
 
@@ -21,13 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bridgelabz.exceptions.UnAuthorizedAccessUser;
-import com.bridgelabz.user.ResponseDTO.CustomResponse;
-import com.bridgelabz.user.ResponseDTO.RegisterErrors;
-import com.bridgelabz.user.model.User;
-import com.bridgelabz.user.model.UserDto;
-import com.bridgelabz.user.service.UserServiceImpl;
-import com.bridgelabz.user.validation.UserValidator;
+import com.fundoonotes.utility.RegisterErrors;
+import com.fundoonotes.exception.UnAuthorizedAccessUser;
+import com.fundoonotes.userservice.User;
+import com.fundoonotes.userservice.UserDto;
+import com.fundoonotes.userservice.UserServiceImpl;
+import com.fundoonotes.utility.CustomResponse;
+import com.fundoonotes.utility.UserValidator;
 
 @RestController  
 public class UserController

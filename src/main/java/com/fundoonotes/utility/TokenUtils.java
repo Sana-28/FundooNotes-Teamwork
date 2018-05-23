@@ -1,4 +1,4 @@
-package com.bridgelabz.user.util;
+package com.fundoonotes.utility;
 
 import java.util.Date;
 

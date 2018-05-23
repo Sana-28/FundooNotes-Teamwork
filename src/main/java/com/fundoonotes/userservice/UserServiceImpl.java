@@ -1,5 +1,6 @@
-package com.bridgelabz.user.service;
+package com.fundoonotes.userservice;
 import java.util.Optional;
+
 
 import java.util.UUID;
 
@@ -9,13 +10,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.fundoonotes.userservice.UserDAO;
+import com.fundoonotes.exception.EmailAlreadyExistsException;
+import com.fundoonotes.userservice.User;
+import com.fundoonotes.userservice.UserDto;
+import com.fundoonotes.userservice.UserController;
+import com.fundoonotes.utility.TokenUtils;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import com.bridgelabz.exceptions.EmailAlreadyExistsException;
-import com.bridgelabz.user.controller.UserController;
-import com.bridgelabz.user.dao.UserDAO;
-import com.bridgelabz.user.model.User;
-import com.bridgelabz.user.model.UserDto;
-import com.bridgelabz.user.util.TokenUtils;
 
 @Service
 public class UserServiceImpl implements UserService{

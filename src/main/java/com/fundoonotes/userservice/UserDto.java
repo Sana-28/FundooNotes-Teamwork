@@ -1,4 +1,4 @@
-package com.bridgelabz.user.model;
+package com.fundoonotes.userservice;
 
 public class UserDto {
 	private String name;

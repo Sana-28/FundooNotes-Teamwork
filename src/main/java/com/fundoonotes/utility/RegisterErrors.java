@@ -1,4 +1,4 @@
-package com.bridgelabz.user.ResponseDTO;
+package com.fundoonotes.utility;
 
 import java.util.List;
 

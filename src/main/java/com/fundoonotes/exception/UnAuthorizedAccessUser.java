@@ -1,6 +1,6 @@
-package com.bridgelabz.exceptions;
+package com.fundoonotes.exception;
 
-import com.bridgelabz.user.ResponseDTO.Response;
+import com.fundoonotes.utility.Response;
 
 public class UnAuthorizedAccessUser extends RuntimeException {
 

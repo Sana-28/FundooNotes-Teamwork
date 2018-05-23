@@ -1,12 +1,13 @@
-package com.bridgelabz.user.service;
+package com.fundoonotes.userservice;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import com.bridgelabz.user.model.EmailProperties;
+import com.fundoonotes.userservice.EmailProperties;
 @Component
 public class MailService {
 

@@ -1,5 +1,5 @@
 
-package com.bridgelabz.user.model;
+package com.fundoonotes.userservice;
 
 import org.springframework.stereotype.Component;
 
