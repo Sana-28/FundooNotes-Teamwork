@@ -13,6 +13,7 @@
 *.rar
 
 *.mvn
+*.mvn/wrapper
 
 **/target
 */target/**
