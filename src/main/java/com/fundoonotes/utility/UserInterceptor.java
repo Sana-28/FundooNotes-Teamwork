@@ -1,4 +1,4 @@
-package com.bridgelabz.filter;
+package com.fundoonotes.utility;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bridgelabz.user.model.User;
-import com.bridgelabz.user.service.UserService;
-import com.bridgelabz.user.util.TokenUtils;
+import com.fundoonotes.userservice.User;
+import com.fundoonotes.userservice.UserService;
+import com.fundoonotes.utility.TokenUtils;
 
 @Component
 public class UserInterceptor implements HandlerInterceptor {

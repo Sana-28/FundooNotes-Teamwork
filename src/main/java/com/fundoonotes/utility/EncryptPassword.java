@@ -1,4 +1,4 @@
-package com.bridgelabz.user.service;
+package com.fundoonotes.utility;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
