@@ -13,6 +13,7 @@ public interface UserDAO extends CrudRepository<User,Long> {
 	    
 	 @Query("select u from User u where u.userId = :userId")
 	 User getUserById(@Param("userId") int userId);
+	 
 	 @Query("UPDATE User c SET c.isActive = :isActive WHERE c.email = :email")
 	 public boolean activeUser(User user);
 	 
