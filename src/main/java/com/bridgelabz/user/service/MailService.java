@@ -28,7 +28,7 @@ public class MailService {
 		boolean flag = false;
 		SimpleMailMessage message = new SimpleMailMessage();
 		try {
-
+			
 			if (emailProperties.getEmailAddress() != null && emailProperties.getEmailAddress() != ""
 					&& emailProperties.getEmailAddress().isEmpty() == false
 					&& !emailProperties.getEmailAddress().equals("null")) {
