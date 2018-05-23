@@ -12,7 +12,10 @@
 *.tar.gz
 *.rar
 
+*.mvn
+
 **/target
+*/target/**
 **/.settings
 **/application.properties
 

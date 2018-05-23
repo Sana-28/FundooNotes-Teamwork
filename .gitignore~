@@ -12,13 +12,12 @@
 *.tar.gz
 *.rar
 
+*.mvn
+
 **/target
+*/target/**
 **/.settings
-<<<<<<< HEAD
 **/application.properties
-=======
-**/development.properties
->>>>>>> 99709b0adebdf65da95fdb54104310186ec3c6d9
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
