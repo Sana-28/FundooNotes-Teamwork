@@ -3,12 +3,8 @@ package com.fundoonotes.userservice;
 
 import java.util.List;
 
-
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,12 +13,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.fundoonotes.utility.RegisterErrors;
+import com.fundoonotes.utility.TokenUtils;
 import com.fundoonotes.exception.UnAuthorizedAccessUser;
 import com.fundoonotes.userservice.User;
 import com.fundoonotes.userservice.UserDto;
@@ -92,5 +90,62 @@ public class UserController
 
 	}
 
-	
+	@RequestMapping(value = "/RegistrationConfirm/{randomId}", method = RequestMethod.POST)
+	public ResponseEntity<CustomResponse> isActiveUser(@PathVariable("randomId") String randomId) {
+
+		CustomResponse customRes = new CustomResponse();
+
+		if (userService.userActivation(randomId)==1) {
+
+			customRes.setMessage("user activation done successfully");
+			customRes.setStatusCode(200);
+			return new ResponseEntity<CustomResponse>(customRes, HttpStatus.CREATED);
+		} else {
+
+			customRes.setMessage("activation fail");
+			customRes.setStatusCode(409);
+			return new ResponseEntity<CustomResponse>(customRes, HttpStatus.CONFLICT);
+		}
+
+	}
+	@RequestMapping(value = "/forgotpassword", method = RequestMethod.POST)
+	public ResponseEntity<CustomResponse> forgotPassword(@RequestBody UserDto userDto, HttpServletRequest request) {
+		CustomResponse customRes = new CustomResponse();
+		try {
+			System.out.println(userDto.getEmail());
+			String url = request.getRequestURL().toString().substring(0, request.getRequestURL().lastIndexOf("/"));
+			if (userService.forgetPassword(userDto.getEmail(), url))
+
+			{
+				customRes.setMessage("forgot password");
+				customRes.setStatusCode(100);
+				return new ResponseEntity<CustomResponse>(customRes, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<CustomResponse>(HttpStatus.CONFLICT);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<CustomResponse>(HttpStatus.NO_CONTENT);
+		}
+	}
+	@RequestMapping(value = "/resetpassword/{jwtToken}", method = RequestMethod.GET)
+	public ResponseEntity<CustomResponse> resetPassword(@RequestBody UserDto userDto,
+			@RequestParam("jwtToken") String jwtToken) {
+
+		CustomResponse customRes = new CustomResponse();
+		int id = TokenUtils.verifyToken(jwtToken);
+		User user = userService.getUserById(id);
+		userDto.setEmail(user.getEmail());
+
+		if (userService.resetPassword(userDto)==1) {
+			customRes.setMessage("Reset Password Sucessfully........");
+			customRes.setStatusCode(100);
+			return new ResponseEntity<CustomResponse>(customRes, HttpStatus.OK);
+
+		} else {
+			customRes.setMessage("Password Not Updated.......");
+			return new ResponseEntity<CustomResponse>(customRes, HttpStatus.BAD_REQUEST);
+		}
+	}
+
 }

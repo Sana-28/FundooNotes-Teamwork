@@ -8,11 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@DynamicUpdate(value=true)
 @Table(name = "User")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class User implements Serializable  {
@@ -34,6 +36,7 @@ public class User implements Serializable  {
 	private String password;
 	private String mobileNumber;
 	private boolean isActive;
+	private String randomId;
 	public User() {
 
 	}
@@ -43,19 +46,19 @@ public class User implements Serializable  {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	private String randomID;
+	
 	
 	public User(UserDto userDto) {
 		this.setName(userDto.getName());
 		this.setEmail(userDto.getEmail());
 		this.setMobileNumber(userDto.getMobileNumber());
 	}
-	public String getRandomID() {
-		return randomID;
+	public String getRandomId() {
+		return randomId;
 	}
 
-	public void setRandomID(String randomID) {
-		this.randomID = randomID;
+	public void setRandomId(String randomId) {
+		this.randomId = randomId;
 	}
 
 	public boolean isActive() {
@@ -66,9 +69,7 @@ public class User implements Serializable  {
 		this.isActive = isActive;
 	}
 	
-	
-	
-	public String getName() {
+  public String getName() {
 		return name;
 	}
 	public void setName(String name) {

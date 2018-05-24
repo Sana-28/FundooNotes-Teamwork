@@ -5,7 +5,10 @@ public interface UserService {
 	//void register(User user);
 	  public void register(UserDto userDto, String requestURL);
 	  public String login(UserDto userDto);
-	  public User getUserById(int userId);
+	  public User getUserById(long userId);
+	  int userActivation(String randomId);
+	  public boolean forgetPassword(String email, String url);
+	  public int resetPassword(UserDto userDto);
 
 }
 		 
